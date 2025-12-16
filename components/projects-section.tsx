@@ -75,7 +75,7 @@ const projects = [
       { icon: Zap, value: "99.9%", label: "Uptime" },
       { icon: TrendingUp, value: "Real-time", label: "Monitoring" },
     ],
-    link: "https://credscout.com",
+    link: "https://credscout.io/",
     color: "from-purple-500 to-pink-400",
     gradient: "bg-gradient-to-br from-purple-500/20 to-pink-400/20",
   },
@@ -104,7 +104,7 @@ const projects = [
       { icon: Zap, value: "40%", label: "Time Saved" },
       { icon: TrendingUp, value: "95%", label: "Accuracy" },
     ],
-    link: "https://promolens.com",
+    link: "https://promolens.ai/",
     color: "from-green-500 to-emerald-400",
     gradient: "bg-gradient-to-br from-green-500/20 to-emerald-400/20",
   },
@@ -359,14 +359,15 @@ export function ProjectsSection() {
                 I've worked on 20+ other projects across various domains
                 including fintech, healthcare, and education.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap justify-center gap-4 text-white hover:text-white">
                 <Button variant="outline" size="lg" asChild>
                   <a
-                    href="https://github.com/lokeshbhatt"
+                    href="https://github.com/lokeshsixberries"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className=" text-white hover:text-white"
                   >
-                    <Sparkles className="mr-2 h-4 w-4" />
+                    <Sparkles className="h-4 w-4 text-white hover:text-white" />
                     View GitHub
                   </a>
                 </Button>
