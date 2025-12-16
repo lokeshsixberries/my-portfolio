@@ -57,7 +57,11 @@ export function Navigation() {
             whileHover={{ scale: 1.05 }}
             className="block bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
           >
-            LB
+            <img
+              className="h-10 w-10"
+              src="/favicon.png"
+              title="Lokesh Sharma Portfolio"
+            />
           </motion.span>
           <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </Link>
