@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.15 0.01 266);
+  --card: oklch(0.98 0.005 266);
+  --card-foreground: oklch(0.15 0.01 266);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.15 0.01 266);
+  --primary: oklch(0.55 0.18 266);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.01 266);
+  --secondary-foreground: oklch(0.15 0.01 266);
+  --muted: oklch(0.94 0.01 266);
+  --muted-foreground: oklch(0.5 0.02 266);
+  --accent: oklch(0.7 0.14 210);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.01 266);
+  --input: oklch(0.9 0.01 266);
+  --ring: oklch(0.55 0.18 266);
+  --chart-1: oklch(0.55 0.18 266);
+  --chart-2: oklch(0.7 0.14 210);
+  --chart-3: oklch(0.6 0.16 240);
+  --chart-4: oklch(0.65 0.15 200);
+  --chart-5: oklch(0.5 0.12 280);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.12 0.02 266);
+  --foreground: oklch(0.94 0.01 266);
+  --card: oklch(0.15 0.02 266);
+  --card-foreground: oklch(0.94 0.01 266);
+  --popover: oklch(0.12 0.02 266);
+  --popover-foreground: oklch(0.94 0.01 266);
+  --primary: oklch(0.65 0.18 266);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.2 0.02 266);
+  --secondary-foreground: oklch(0.94 0.01 266);
+  --muted: oklch(0.2 0.02 266);
+  --muted-foreground: oklch(0.6 0.02 266);
+  --accent: oklch(0.7 0.14 210);
+  --accent-foreground: oklch(0.12 0.02 266);
+  --destructive: oklch(0.55 0.25 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.22 0.02 266);
+  --input: oklch(0.22 0.02 266);
+  --ring: oklch(0.65 0.18 266);
+  --chart-1: oklch(0.65 0.18 266);
+  --chart-2: oklch(0.7 0.14 210);
+  --chart-3: oklch(0.6 0.16 240);
+  --chart-4: oklch(0.65 0.15 200);
+  --chart-5: oklch(0.5 0.12 280);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Enhanced code block styling for blog posts */
+  .prose pre {
+    @apply bg-muted/60 border border-border shadow-sm;
+  }
+
+  .prose code {
+    @apply font-mono;
+  }
+
+  .prose pre code {
+    @apply text-foreground/90;
+  }
+
+  .prose :not(pre) > code {
+    @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary before:content-none after:content-none;
+  }
+
+  /* Syntax highlighting with CSS */
+  .prose pre code .token.comment,
+  .prose pre code .token.prolog,
+  .prose pre code .token.doctype,
+  .prose pre code .token.cdata {
+    @apply text-muted-foreground/70;
+  }
+
+  .prose pre code .token.punctuation {
+    @apply text-foreground/60;
+  }
+
+  .prose pre code .token.property,
+  .prose pre code .token.tag,
+  .prose pre code .token.boolean,
+  .prose pre code .token.number,
+  .prose pre code .token.constant,
+  .prose pre code .token.symbol {
+    @apply text-accent;
+  }
+
+  .prose pre code .token.selector,
+  .prose pre code .token.attr-name,
+  .prose pre code .token.string,
+  .prose pre code .token.char,
+  .prose pre code .token.builtin {
+    @apply text-primary;
+  }
+
+  .prose pre code .token.operator,
+  .prose pre code .token.entity,
+  .prose pre code .token.url,
+  .prose pre code .token.variable {
+    @apply text-accent-foreground;
+  }
+
+  .prose pre code .token.function,
+  .prose pre code .token.class-name {
+    @apply text-chart-2 font-semibold;
+  }
+
+  .prose pre code .token.keyword {
+    @apply text-chart-1 font-medium;
+  }
+}
