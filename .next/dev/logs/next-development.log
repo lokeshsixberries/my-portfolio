@@ -1,6 +1,6 @@
-[00:00:06.959] Server  LOG      ✓ Ready in 4.6s
-[00:00:10.041] Server  LOG      ○ Compiling / ...
-[00:00:23.058] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:03.902] Server  LOG      ✓ Ready in 2.5s
+[00:00:08.527] Server  LOG      ○ Compiling / ...
+[00:00:26.519] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -36,148 +36,120 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:00:23.318] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:23.318] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:23.318] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contact color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/#contact","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765889834350}
-[00:01:56.115] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:56.115] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:56.115] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contact color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/#contact","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765889927163}
-[00:02:52.751] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:02:52.752] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:02:52.752] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contact color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/#contact","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765889983777}
-[00:03:25.887] Server  LOG      ✓ Compiled in 694ms
-[00:03:26.506] Browser ERROR   Received `%s` for a non-boolean attribute `%s`.
+[00:00:26.763] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:26.763] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:26.763] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891085312}
+[00:00:48.245] Server  LOG      ✓ Compiled in 847ms
+[00:00:52.036] Server  LOG      ✓ Compiled in 2.3s
+[00:01:49.049] Server  LOG      ✓ Compiled in 1204ms
+[00:01:52.803] Server  LOG      ✓ Compiled in 719ms
+[00:04:24.866] Server  LOG      ✓ Compiled in 1318ms
+[00:04:37.350] Server  LOG      ✓ Compiled in 256ms
+[00:04:44.037] Server  LOG      ✓ Compiled in 331ms
+[00:04:45.084] Server  LOG      ✓ Compiled in 411ms
+[00:05:15.481] Server  LOG      ✓ Compiled in 670ms
+[00:05:22.002] Server  LOG      ✓ Compiled in 325ms
+[00:06:23.453] Server  LOG      ✓ Compiled in 2.1s
+[00:06:30.575] Server  LOG      ✓ Compiled in 711ms
+[00:06:31.572] Server  LOG      ✓ Compiled in 694ms
+[00:06:37.978] Server  LOG      ✓ Compiled in 387ms
+[00:07:38.598] Server  LOG      ✓ Compiled in 314ms
+[00:07:47.302] Server  LOG      ✓ Compiled in 619ms
+[00:14:32.940] Server  LOG      ✓ Compiled in 438ms
+[00:15:13.413] Server  LOG      ✓ Compiled in 723ms
+[00:15:29.515] Server  LOG      ✓ Compiled in 689ms
+[00:15:37.857] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
-If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}. true h h true h
-[00:03:27.617] Server  LOG      ✓ Compiled in 325ms
-[00:03:28.525] Browser ERROR   Received `%s` for a non-boolean attribute `%s`.
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
 
-If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}. true hre hre true hre
-[00:03:29.633] Server  LOG      ✓ Compiled in 298ms
-[00:03:30.494] Browser ERROR   Received `%s` for a non-boolean attribute `%s`.
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
 
-If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}. true href href true href
-[00:03:39.277] Server  LOG      ✓ Compiled in 308ms
-[00:03:39.620] Browser ERROR   ./components/navigation.tsx:61:11
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="inter_5972bc34-module__OU16Qa__className antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:15:38.049] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:15:38.049] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:15:38.049] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765891996585}
+[00:16:22.166] Server  LOG      ✓ Compiled in 491ms
+[00:16:27.714] Server  LOG      ✓ Compiled in 401ms
+[00:16:28.009] Browser ERROR   ./components/contact-section.tsx:439:23
 Parsing ecmascript source code failed
-  59 |           >
-  60 |             <img className="" src= "/>
-> 61 |           </motion.span>
-     |           ^
-  62 |           <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-  63 |         </Link>
-  64 |
+  437 |                       onClick={() => {
+  438 |                         window.
+> 439 |                       }}
+      |                       ^
+  440 |                       className="group cursor-pointer relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
+  441 |                     >
+  442 |                       <div className="space-y-3">
+
+Expected '</', got '}'
+
+Import trace:
+  Server Component:
+    ./components/contact-section.tsx
+    ./app/page.tsx
+[00:16:30.838] Server  LOG      ✓ Compiled in 245ms
+[00:16:31.003] Browser ERROR   ./components/contact-section.tsx:438:46
+Parsing ecmascript source code failed
+  436 |                     <Card
+  437 |                       onClick={() => {
+> 438 |                         window.open(info.link;)
+      |                                              ^
+  439 |                       }}
+  440 |                       className="group cursor-pointer relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
+  441 |                     >
+
+Expected '</', got ';'
+
+Import trace:
+  Server Component:
+    ./components/contact-section.tsx
+    ./app/page.tsx
+[00:16:32.202] Server  LOG      ✓ Compiled in 462ms
+[00:16:34.635] Server  LOG      ✓ Compiled in 338ms
+[00:16:35.040] Browser ERROR   ./components/contact-section.tsx:438:48
+Parsing ecmascript source code failed
+  436 |                     <Card
+  437 |                       onClick={() => {
+> 438 |                         window.open(info.link,+);
+      |                                                ^
+  439 |                       }}
+  440 |                       className="group cursor-pointer relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
+  441 |                     >
 
 Expression expected
 
 Import trace:
   Server Component:
-    ./components/navigation.tsx
+    ./components/contact-section.tsx
     ./app/page.tsx
-[00:03:39.620] Browser ERROR   ./components/navigation.tsx:61:12
-Parsing ecmascript source code failed
-  59 |           >
-  60 |             <img className="" src= "/>
-> 61 |           </motion.span>
-     |            ^^^^^^^^^^^^^
-  62 |           <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-  63 |         </Link>
-  64 |
-
-Unterminated regexp literal
-
-Import trace:
-  Server Component:
-    ./components/navigation.tsx
-    ./app/page.tsx
-[00:03:39.620] Browser ERROR   ./components/navigation.tsx:60:36
-Parsing ecmascript source code failed
-  58 |             className="block bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
-  59 |           >
-> 60 |             <img className="" src= "/>
-     |                                    ^^^
-  61 |           </motion.span>
-  62 |           <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-  63 |         </Link>
-
-Unterminated string constant
-
-Import trace:
-  Server Component:
-    ./components/navigation.tsx
-    ./app/page.tsx
-[00:03:40.842] Server  LOG      ✓ Compiled in 257ms
-[00:03:41.502] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
-[00:03:44.829] Server  LOG      ✓ Compiled in 358ms
-[00:03:48.674] Server  LOG      ✓ Compiled in 557ms
-[00:04:04.772] Server  LOG      ✓ Compiled in 427ms
-[00:04:05.505] Browser ERROR   ./components/navigation.tsx:61:15
-Parsing ecmascript source code failed
-  59 |           >
-  60 |             <img className="" src="/favicon.png" class name {
-> 61 |               constructor(parameters) {
-     |               ^^^^^^^^^^^
-  62 |                 
-  63 |               }
-  64 |             }/>
-
-Expected '</', got 'constructor'
-
-Import trace:
-  Server Component:
-    ./components/navigation.tsx
-    ./app/page.tsx
-[00:04:06.246] Server  LOG      ✓ Compiled in 541ms
-[00:04:08.748] Browser ERROR   Received `%s` for a non-boolean attribute `%s`.
-
-If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}. true clas clas true clas
-[00:04:09.021] Server  LOG      ✓ Compiled in 835ms
-[00:04:13.413] Server  LOG      ✓ Compiled in 280ms
-[00:04:17.514] Server  LOG      ✓ Compiled in 584ms
-[00:04:21.986] Server  LOG      ✓ Compiled in 327ms
-[00:04:24.442] Server  LOG      ✓ Compiled in 1123ms
-[00:04:37.350] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en" suppressHydrationWarning={true}>
-                          <body
-                            className="inter_5972bc34-module__OU16Qa__className antialiased"
--                           cz-shortcut-listen="true"
-                          >
-                  ...
-
-[00:04:37.531] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:37.531] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:04:37.531] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/#contact color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/#contact","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765890088585}
-[00:04:45.563] Server  LOG      ✓ Compiled in 178ms
-[00:04:46.495] Browser ERROR   Received `%s` for a non-boolean attribute `%s`.
-
-If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}. true t t true t
-[00:04:54.451] Server  LOG      ✓ Compiled in 350ms
-[00:05:01.074] Server  LOG      ✓ Compiled in 493ms
+[00:17:53.089] Server  LOG      ✓ Compiled in 321ms
+[00:19:12.297] Server  LOG      ○ Compiling /blog ...
+[00:19:14.660] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/blog color: rgb(120, 120, 120) color: inherit {"dp":"/blog","o":"http://localhost:3000/blog","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765892213148}

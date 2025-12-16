@@ -35,25 +35,25 @@ const links = [
 const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/lokeshbhatt",
+    href: "https://github.com/lokeshsixberries",
     icon: "github",
     color: "hover:text-gray-800",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/lokeshbhatt",
+    href: "https://www.linkedin.com/in/lokeshsharma9895/",
     icon: "linkedin",
     color: "hover:text-blue-700",
   },
   {
     label: "Twitter",
-    href: "https://twitter.com/lokeshbhatt",
+    href: "https://x.com/LokeshS61182227",
     icon: "twitter",
     color: "hover:text-sky-500",
   },
   {
     label: "Email",
-    href: "mailto:lokesh@example.com",
+    href: "mailto:sharma.lokesh.222001@gmail.com",
     icon: "mail",
     color: "hover:text-red-600",
   },

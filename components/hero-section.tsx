@@ -163,13 +163,18 @@ export function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="group hover:text-white"
+                onClick={() => {
+                  window.open(
+                    "https://drive.google.com/file/d/1JjjIm6lhiqgKla3JhsbzjNSaQIp6Ugjv/view"
+                  );
+                }}
+                className="group cursor-pointer hover:text-white"
               >
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <p>
                   <FileText className="mr-2 h-4 w-4 transition-transform group-hover:rotate-12" />
                   Download Resume
                   <span className="ml-2 inline-flex h-2 w-2 animate-pulse rounded-full bg-green-500" />
-                </a>
+                </p>
               </Button>
             </motion.div>
           </motion.div>
@@ -187,7 +192,7 @@ export function HeroSection() {
                     className="group relative h-12 w-12 rounded-full text-white hover:text-black"
                   >
                     <a
-                      href="https://github.com/lokeshbhatt"
+                      href="https://github.com/lokeshsixberries"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub"
@@ -204,7 +209,7 @@ export function HeroSection() {
                     className="group relative h-12 w-12 rounded-full text-white hover:text-black"
                   >
                     <a
-                      href="https://linkedin.com/in/lokeshbhatt"
+                      href="https://www.linkedin.com/in/lokeshsharma9895/"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
@@ -220,7 +225,10 @@ export function HeroSection() {
                     asChild
                     className="group relative h-12 w-12 rounded-full text-white hover:text-black"
                   >
-                    <a href="mailto:lokesh@example.com" aria-label="Email">
+                    <a
+                      href="mailto:sharma.lokesh.222001@gmail.com"
+                      aria-label="Email"
+                    >
                       <Mail className="h-5 w-5 hover:text-white" />
                     </a>
                   </Button>

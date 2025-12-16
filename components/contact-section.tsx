@@ -50,7 +50,7 @@ const contactInfo = [
     icon: Mail,
     title: "Email",
     value: "lokesh@example.com",
-    link: "mailto:lokesh@example.com",
+    link: "mailto:sharma.lokesh.222001@gmail.com",
     description: "Typically reply within 12 hours",
     color: "from-blue-500 to-cyan-400",
   },
@@ -58,7 +58,7 @@ const contactInfo = [
     icon: Linkedin,
     title: "LinkedIn",
     value: "linkedin.com/in/lokeshbhatt",
-    link: "https://linkedin.com/in/lokeshbhatt",
+    link: "https://www.linkedin.com/in/lokeshsharma9895/ ",
     description: "Connect for professional inquiries",
     color: "from-purple-500 to-pink-400",
   },
@@ -66,7 +66,7 @@ const contactInfo = [
     icon: Github,
     title: "GitHub",
     value: "github.com/lokeshbhatt",
-    link: "https://github.com/lokeshbhatt",
+    link: "https://github.com/lokeshsixberries",
     description: "View my open-source contributions",
     color: "from-gray-800 to-gray-600",
   },
@@ -82,6 +82,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Location",
     value: "Ahmedabad, India",
+    link: "https://maps.app.goo.gl/ywHafYxatHkT3s8z6",
     description: "Open to remote opportunities worldwide",
     color: "from-red-500 to-orange-400",
   },
@@ -433,7 +434,12 @@ export function ContactSection() {
                     transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -4 }}
                   >
-                    <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50">
+                    <Card
+                      onClick={() => {
+                        window.open(info.link, "_blank");
+                      }}
+                      className="group cursor-pointer relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
+                    >
                       <div className="space-y-3">
                         <div
                           className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${info.color}`}
