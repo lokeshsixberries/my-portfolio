@@ -1,6 +1,6 @@
-[00:00:31.771] Server  LOG      ✓ Ready in 22.5s
-[00:00:34.966] Server  LOG      ○ Compiling / ...
-[00:00:58.169] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:24.930] Server  LOG      ✓ Ready in 14.8s
+[00:00:28.204] Server  LOG      ○ Compiling / ...
+[00:00:53.625] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -36,13 +36,230 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:00:58.406] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:58.408] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:58.408] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1765893989578}
-[00:09:11.211] Server  LOG      ✓ Compiled in 312ms
-[00:10:26.916] Server  LOG      ✓ Compiled in 286ms
-[00:10:28.973] Server  LOG      ✓ Compiled in 693ms
-[00:10:34.744] Server  LOG      ✓ Compiled in 668ms
-[00:10:45.104] Server  LOG      ✓ Compiled in 514ms
-[00:10:47.423] Server  LOG      ✓ Compiled in 310ms
-[00:11:27.549] Server  LOG      ✓ Compiled in 360ms
+[00:00:53.819] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:53.819] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:53.819] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766319582961}
+[00:01:52.256] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="inter_5972bc34-module__OU16Qa__className antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:01:52.470] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:52.470] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:52.470] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766319641599}
+[00:02:42.610] Server  LOG      ✓ Compiled in 381ms
+[00:02:45.483] Server  LOG      ✓ Compiled in 335ms
+[00:02:50.424] Server  LOG      ✓ Compiled in 1324ms
+[00:03:07.596] Server  LOG      ✓ Compiled in 563ms
+[00:03:28.563] Server  LOG      ✓ Compiled in 237ms
+[00:03:29.316] Browser ERROR   ./components/contact-section.tsx:455:28
+Parsing ecmascript source code failed
+  453 |                           
+  454 |                       </div>
+> 455 |                     </Card>
+      |                            ^
+> 456 |                   </motion.div>
+      | ^^^^^^^^^^^^^^^^^^^
+  457 |                 ))}
+  458 |               </motion.div>
+  459 |             </motion.div>
+
+Expected '</', got 'jsx text (
+                  )'
+
+Import trace:
+  Server Component:
+    ./components/contact-section.tsx
+    ./app/page.tsx
+[00:03:30.574] Server  LOG      ✓ Compiled in 489ms
+[00:03:51.453] Server  LOG      ✓ Compiled in 1395ms
+[00:03:54.777] Server  LOG      ✓ Compiled in 956ms
+[00:03:58.784] Server  LOG      ✓ Compiled in 665ms
+[00:05:14.362] Server  LOG      ✓ Compiled in 267ms
+[00:06:04.866] Server  LOG      ✓ Compiled in 279ms
+[00:06:31.058] Server  LOG      ✓ Compiled in 418ms
+[00:06:55.755] Server  LOG      ✓ Compiled in 165ms
+[00:06:59.867] Server  LOG      ✓ Compiled in 254ms
+[00:07:10.324] Server  LOG      ✓ Compiled in 289ms
+[00:07:20.099] Server  LOG      ✓ Compiled in 316ms
+[00:07:23.611] Server  LOG      ✓ Compiled in 1636ms
+[00:07:56.696] Server  LOG      ✓ Compiled in 162ms
+[00:08:03.600] Server  LOG      ✓ Compiled in 199ms
+[00:08:13.150] Server  LOG      ✓ Compiled in 249ms
+[00:08:21.757] Server  LOG      ✓ Compiled in 209ms
+[00:08:28.764] Server  LOG      ✓ Compiled in 267ms
+[00:08:33.074] Server  LOG      ✓ Compiled in 247ms
+[00:08:40.262] Server  LOG      ✓ Compiled in 402ms
+[00:08:49.225] Server  LOG      ✓ Compiled in 232ms
+[00:08:50.443] Server  LOG      ✓ Compiled in 268ms
+[00:09:01.929] Server  LOG      ✓ Compiled in 140ms
+[00:09:03.285] Server  LOG      ✓ Compiled in 150ms
+[00:09:12.024] Server  LOG      ✓ Compiled in 310ms
+[00:09:33.607] Server  LOG      ✓ Compiled in 495ms
+[00:09:35.112] Server  LOG      ✓ Compiled in 425ms
+[00:09:37.538] Server  LOG      ✓ Compiled in 251ms
+[00:09:46.138] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="inter_5972bc34-module__OU16Qa__className antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:09:46.138] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:46.138] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:09:46.138] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766320115105}
+[00:10:24.400] Server  LOG      ✓ Compiled in 209ms
+[00:10:29.440] Server  LOG      ✓ Compiled in 756ms
+[00:10:36.577] Server  LOG      ✓ Compiled in 226ms
+[00:10:46.232] Server  LOG      ✓ Compiled in 492ms
+[00:10:51.596] Server  LOG      ✓ Compiled in 271ms
+[00:10:59.120] Server  LOG      ✓ Compiled in 413ms
+[00:30:43.774] Server  LOG      ✓ Compiled in 624ms
+[00:31:21.263] Server  LOG      ✓ Compiled in 355ms
+[00:36:23.577] Server  LOG      ✓ Compiled in 1310ms
+[00:36:46.752] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"sadsadddasdsads","timeline":""}
+[00:39:55.648] Server  LOG      ✓ Compiled in 396ms
+[00:46:37.284] Server  LOG      ✓ Compiled in 1059ms
+[00:49:46.947] Server  LOG      ✓ Compiled in 328ms
+[00:50:10.364] Browser ERROR   Telegram API Error: {"description":"Bad Request: chat not found","error_code":400,"ok":false}
+[00:50:10.364] Browser ERROR   Error sending to Telegram: {}
+[00:50:11.864] Browser LOG     Form submitted: {"budget":"1112","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"adsdasdsadsd","telegramSent":false,"timeline":"23","timestamp":"2025-12-21T13:09:01.014Z"}
+[00:54:15.564] Server  LOG      ✓ Compiled in 599ms
+[00:54:31.729] Browser ERROR   Telegram API Error: {"description":"Forbidden: bots can't send messages to bots","error_code":403,"ok":false}
+[00:54:31.729] Browser ERROR   Error sending to Telegram: {}
+[00:54:33.223] Browser LOG     Form submitted: {"budget":"2222","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"sadasdsadasdsad","telegramSent":false,"timeline":"2","timestamp":"2025-12-21T13:13:22.375Z"}
+[00:55:05.187] Server  LOG      ✓ Compiled in 227ms
+[00:55:06.695] Server  LOG      ✓ Compiled in 773ms
+[00:55:07.360] Server  LOG      ✓ Compiled in 423ms
+[00:55:11.455] Server  LOG      ✓ Compiled in 252ms
+[01:03:14.335] Server  LOG      ✓ Compiled in 258ms
+[01:03:27.497] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323335,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":7,"offset":149,"type":"bold"},{"length":9,"offset":163,"type":"bold"},{"length":13,"offset":180,"type":"bold"},{"length":7,"offset":220,"type":"bold"}],"from":{"first_name":"portfolio","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"message_id":7,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\newqsasadsadsa\n\n💰 Budget: 232\n⏰ Timeline: 23\n\n📅 Submitted at: 21/12/2025, 6:52:15 pm\n🌐 Source: Portfolio Website"}}
+[01:03:28.998] Browser LOG     Form submitted: {"budget":"232","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"ewqsasadsadsa","telegramSent":true,"timeline":"23","timestamp":"2025-12-21T13:22:18.145Z"}
+[01:04:09.282] Server  LOG      ✓ Compiled in 244ms
+[01:04:15.709] Server  LOG      ✓ Compiled in 370ms
+[01:04:25.791] Server  LOG      ✓ Compiled in 696ms
+[01:04:35.582] Server  LOG      ✓ Compiled in 233ms
+[01:04:37.517] Server  LOG      ✓ Compiled in 220ms
+[01:04:44.315] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323412,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":13,"offset":150,"type":"bold"},{"length":7,"offset":190,"type":"bold"}],"from":{"first_name":"portfolio","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"message_id":8,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\nasdsdsadsdsdsa\n\n📅 Submitted at: 21/12/2025, 6:53:32 pm\n🌐 Source: Portfolio Website"}}
+[01:04:45.825] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"asdsdsadsdsdsa","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:23:34.980Z"}
+[01:09:24.361] Server  LOG      ✓ Compiled in 1280ms
+[01:09:55.008] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323724,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":9,"offset":173,"type":"bold"},{"length":13,"offset":225,"type":"bold"},{"length":7,"offset":265,"type":"bold"}],"from":{"first_name":"thelokesh.site","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"message_id":10,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\nHow india is growing in london market\n\n📍 Location: Not provided (user denied permission)\n\n📅 Submitted at: 21/12/2025, 6:58:43 pm\n🌐 Source: Portfolio Website"}}
+[01:09:56.500] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","message":"How india is growing in london market","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:28:45.656Z"}
+[01:10:35.968] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="inter_5972bc34-module__OU16Qa__className antialiased"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[01:10:36.177] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:10:36.177] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:10:36.177] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1766323765323}
+[01:10:47.393] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323775,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":21,"offset":151,"type":"bold"},{"length":12,"offset":178,"type":"bold"},{"length":5,"offset":217,"type":"bold"},{"length":8,"offset":236,"type":"bold"},{"length":19,"offset":256,"type":"text_link","url":"https://www.google.com/maps?q=23.0260736,72.5385216"},{"length":13,"offset":280,"type":"bold"},{"length":7,"offset":320,"type":"bold"}],"from":{"first_name":"thelokesh.site","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"link_preview_options":{"is_disabled":true},"message_id":11,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\ndfdsfsdfdfsdfdf\n\n📍 Location Information:\n   • Coordinates: 23.026074, 72.538522\n   • City: Unknown\n   • Country: India\n   • View on Google Maps\n\n📅 Submitted at: 21/12/2025, 6:59:35 pm\n🌐 Source: Portfolio Website"}}
+[01:10:48.896] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","location":{"country":"India","latitude":23.0260736,"longitude":72.5385216},"message":"dfdsfsdfdfsdfdf","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:29:38.050Z"}
+[01:12:04.602] Server  LOG      ✓ Compiled in 796ms
+[01:12:22.167] Server  LOG      ✓ Compiled in 451ms
+[01:12:29.665] Server  LOG      ✓ Compiled in 442ms
+[01:12:34.836] Server  LOG      ✓ Compiled in 207ms
+[01:12:47.777] Server  LOG      ✓ Compiled in 981ms
+[01:13:21.819] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323930,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":57,"type":"bold"},{"length":30,"offset":64,"type":"email"},{"length":8,"offset":98,"type":"bold"},{"length":8,"offset":121,"type":"bold"},{"length":9,"offset":164,"type":"bold"},{"length":13,"offset":216,"type":"bold"},{"length":7,"offset":256,"type":"bold"}],"from":{"first_name":"thelokesh.site","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"message_id":12,"text":"🎯 New Contact Form Submission\n\n👤 Name: Govind Bhatt\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\nhow chianaddsdasdasdsadasdasd\n\n📍 Location: Not provided (user denied permission)\n\n📅 Submitted at: 21/12/2025, 7:02:09 pm\n🌐 Source: Portfolio Website"}}
+[01:13:23.327] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"Govind","lastName":"Bhatt","message":"how chianaddsdasdasdsadasdasd","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:32:12.480Z"}
+[01:13:40.704] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766323949,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":21,"offset":152,"type":"bold"},{"length":12,"offset":179,"type":"bold"},{"length":5,"offset":218,"type":"bold"},{"length":8,"offset":237,"type":"bold"},{"length":19,"offset":257,"type":"text_link","url":"https://www.google.com/maps?q=23.0260736,72.5385216"},{"length":13,"offset":281,"type":"bold"},{"length":7,"offset":321,"type":"bold"}],"from":{"first_name":"thelokesh.site","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"link_preview_options":{"is_disabled":true},"message_id":13,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\nasdsdasdsadsadsa\n\n📍 Location Information:\n   • Coordinates: 23.026074, 72.538522\n   • City: Unknown\n   • Country: India\n   • View on Google Maps\n\n📅 Submitted at: 21/12/2025, 7:02:29 pm\n🌐 Source: Portfolio Website"}}
+[01:13:42.216] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","location":{"country":"India","latitude":23.0260736,"longitude":72.5385216},"message":"asdsdasdsadsadsa","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:32:31.371Z"}
+[01:14:05.728] Server  LOG      ✓ Compiled in 607ms
+[01:14:12.552] Server  LOG      ✓ Compiled in 202ms
+[01:14:18.536] Server  LOG      ✓ Compiled in 249ms
+[01:14:26.945] Server  LOG      ✓ Compiled in 830ms
+[01:14:32.898] Browser LOG     Telegram message sent successfully: {"ok":true,"result":{"chat":{"first_name":"Lokesh","id":1060120862,"last_name":"Sharma","type":"private","username":"lokesh_sharma_dev"},"date":1766324001,"entities":[{"length":27,"offset":3,"type":"bold"},{"length":5,"offset":35,"type":"bold"},{"length":6,"offset":58,"type":"bold"},{"length":30,"offset":65,"type":"email"},{"length":8,"offset":99,"type":"bold"},{"length":8,"offset":122,"type":"bold"},{"length":21,"offset":150,"type":"bold"},{"length":12,"offset":177,"type":"bold"},{"length":5,"offset":216,"type":"bold"},{"length":8,"offset":235,"type":"bold"},{"length":19,"offset":255,"type":"text_link","url":"https://www.google.com/maps?q=23.0260736,72.5385216"},{"length":13,"offset":279,"type":"bold"},{"length":7,"offset":319,"type":"bold"}],"from":{"first_name":"thelokesh.site","id":8502299983,"is_bot":true,"username":"lokesh_portfolio_bot"},"link_preview_options":{"is_disabled":true},"message_id":14,"text":"🎯 New Contact Form Submission\n\n👤 Name: LOKESH SHARMA\n📧 Email: sharma.lokesh.222001@gmail.com\n🏢 Company: whitemonk\n\n💬 Message:\ndsdasadsdsadsa\n\n📍 Location Information:\n   • Coordinates: 23.026074, 72.538522\n   • City: Unknown\n   • Country: India\n   • View on Google Maps\n\n📅 Submitted at: 21/12/2025, 7:03:21 pm\n🌐 Source: Portfolio Website"}}
+[01:14:36.128] Browser LOG     Form submitted: {"budget":"","company":"whitemonk","email":"sharma.lokesh.222001@gmail.com","firstName":"LOKESH","lastName":"SHARMA","location":{"country":"India","latitude":23.0260736,"longitude":72.5385216},"message":"dsdasadsdsadsa","telegramSent":true,"timeline":"","timestamp":"2025-12-21T13:33:24.392Z"}
+[01:14:40.507] Server  LOG      ✓ Compiled in 153ms
+[01:14:44.305] Server  LOG      ✓ Compiled in 280ms

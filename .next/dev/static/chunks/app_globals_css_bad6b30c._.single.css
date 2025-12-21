@@ -104,6 +104,7 @@
     --color-orange-400: #ff8b1a;
     --color-orange-500: #fe6e00;
     --color-amber-400: #fcbb00;
+    --color-amber-500: #f99c00;
     --color-amber-600: #dd7400;
     --color-yellow-400: #fac800;
     --color-yellow-500: #edb200;
@@ -208,6 +209,7 @@
       --color-orange-400: lab(70.0429% 42.5156 75.8207);
       --color-orange-500: lab(64.272% 57.1788 90.3583);
       --color-amber-400: lab(80.1641% 16.6016 99.2089);
+      --color-amber-500: lab(72.7183% 31.8672 97.9407);
       --color-amber-600: lab(60.3514% 40.5624 87.1228);
       --color-yellow-400: lab(83.2664% 8.65132 106.895);
       --color-yellow-500: lab(76.3898% 14.5258 98.4589);
@@ -1039,6 +1041,10 @@
     margin-top: calc(var(--spacing) * .5);
   }
 
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+
   .mt-1\.5 {
     margin-top: calc(var(--spacing) * 1.5);
   }
@@ -1049,6 +1055,10 @@
 
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
   }
 
   .mt-8 {
@@ -1158,6 +1168,10 @@
 
   .block {
     display: block;
+  }
+
+  .contents {
+    display: contents;
   }
 
   .flex {
@@ -1355,6 +1369,10 @@
 
   .h-24 {
     height: calc(var(--spacing) * 24);
+  }
+
+  .h-30 {
+    height: calc(var(--spacing) * 30);
   }
 
   .h-37 {
@@ -2210,12 +2228,32 @@
     border-color: var(--color-border);
   }
 
+  .border-amber-500\/30 {
+    border-color: #f99c004d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-amber-500\/30 {
+      border-color: color-mix(in oklab, var(--color-amber-500) 30%, transparent);
+    }
+  }
+
   .border-background {
     border-color: var(--background);
   }
 
   .border-blue-500 {
     border-color: var(--color-blue-500);
+  }
+
+  .border-blue-500\/30 {
+    border-color: #3080ff4d;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-blue-500\/30 {
+      border-color: color-mix(in oklab, var(--color-blue-500) 30%, transparent);
+    }
   }
 
   .border-border {
@@ -2344,6 +2382,16 @@
 
   .bg-accent {
     background-color: var(--accent);
+  }
+
+  .bg-amber-500\/10 {
+    background-color: #f99c001a;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-amber-500\/10 {
+      background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+    }
   }
 
   .bg-background {
@@ -3631,8 +3679,32 @@
     color: var(--accent-foreground);
   }
 
+  .text-amber-500 {
+    color: var(--color-amber-500);
+  }
+
+  .text-amber-500\/80 {
+    color: #f99c00cc;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-amber-500\/80 {
+      color: color-mix(in oklab, var(--color-amber-500) 80%, transparent);
+    }
+  }
+
   .text-amber-600 {
     color: var(--color-amber-600);
+  }
+
+  .text-amber-600\/80 {
+    color: #dd7400cc;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-amber-600\/80 {
+      color: color-mix(in oklab, var(--color-amber-600) 80%, transparent);
+    }
   }
 
   .text-background {
@@ -3645,6 +3717,16 @@
 
   .text-blue-500 {
     color: var(--color-blue-500);
+  }
+
+  .text-blue-500\/80 {
+    color: #3080ffcc;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-blue-500\/80 {
+      color: color-mix(in oklab, var(--color-blue-500) 80%, transparent);
+    }
   }
 
   .text-blue-600 {
@@ -4600,6 +4682,18 @@
   @media (hover: hover) {
     .hover\:bg-accent:hover {
       background-color: var(--accent);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-amber-500\/10:hover {
+      background-color: #f99c001a;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-amber-500\/10:hover {
+        background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+      }
     }
   }
 
@@ -6083,8 +6177,32 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 40rem) {
     .sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:grid-cols-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
     }
   }
 
@@ -6115,6 +6233,12 @@
   @media (min-width: 40rem) {
     .sm\:justify-end {
       justify-content: flex-end;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:gap-1 {
+      gap: calc(var(--spacing) * 1);
     }
   }
 

@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,7 +18,7 @@ import {
   Sparkles,
   MessageSquare,
   ExternalLink,
-  Zap,
+  AlertCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -58,7 +57,7 @@ const contactInfo = [
     icon: Linkedin,
     title: "LinkedIn",
     value: "linkedin.com/in/lokeshbhatt",
-    link: "https://www.linkedin.com/in/lokeshsharma9895/ ",
+    link: "https://www.linkedin.com/in/lokeshsharma9895/",
     description: "Connect for professional inquiries",
     color: "from-purple-500 to-pink-400",
   },
@@ -96,6 +95,174 @@ const fadeInUp = {
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [telegramError, setTelegramError] = useState<string | null>(null);
+  const [isGettingLocation, setIsGettingLocation] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
+  const [userLocation, setUserLocation] = useState<{
+    latitude: number | null;
+    longitude: number | null;
+    city?: string;
+    country?: string;
+  } | null>(null);
+
+  const TELEGRAM_BOT_TOKEN = "8502299983:AAH3GXIahePYICF2Uv11aQnmaiEH3fj1HYo";
+  const TELEGRAM_CHAT_ID = "1060120862";
+
+  // Function to get user's current location
+  const getUserLocation = (): Promise<GeolocationPosition> => {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject(new Error("Geolocation is not supported by your browser"));
+      } else {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        });
+      }
+    });
+  };
+
+  // Function to reverse geocode coordinates to get city/country
+  const reverseGeocode = async (lat: number, lon: number) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`
+      );
+      const data = await response.json();
+      return {
+        city: data.address?.city || data.address?.town || data.address?.village,
+        country: data.address?.country,
+      };
+    } catch (error) {
+      console.error("Reverse geocoding error:", error);
+      return null;
+    }
+  };
+
+  // Function to get location details
+  const getLocationDetails = async (): Promise<{
+    latitude: number;
+    longitude: number;
+    city?: string;
+    country?: string;
+  }> => {
+    setIsGettingLocation(true);
+    setLocationError(null);
+
+    try {
+      // Get user's current location
+      const position = await getUserLocation();
+      const { latitude, longitude } = position.coords;
+
+      // Try to get city/country information
+      const locationInfo = await reverseGeocode(latitude, longitude);
+
+      const locationData = {
+        latitude,
+        longitude,
+        city: locationInfo?.city,
+        country: locationInfo?.country,
+      };
+
+      setUserLocation(locationData);
+      return locationData;
+    } catch (error: any) {
+      let errorMessage = "Failed to get location.";
+
+      if (error.code === 1) {
+        errorMessage =
+          "Location permission denied. Please allow location access.";
+      } else if (error.code === 2) {
+        errorMessage =
+          "Location unavailable. Please check your network connection.";
+      } else if (error.code === 3) {
+        errorMessage = "Location request timed out. Please try again.";
+      }
+
+      setLocationError(errorMessage);
+      throw new Error(errorMessage);
+    } finally {
+      setIsGettingLocation(false);
+    }
+  };
+
+  const sendTelegramMessage = async (
+    formData: FormData,
+    locationData?: {
+      latitude: number;
+      longitude: number;
+      city?: string;
+      country?: string;
+    }
+  ) => {
+    let locationText = "";
+
+    if (locationData) {
+      const mapsLink = `https://www.google.com/maps?q=${locationData.latitude},${locationData.longitude}`;
+      locationText = `
+📍 *Location Information:*
+   • *Coordinates:* ${locationData.latitude.toFixed(
+     6
+   )}, ${locationData.longitude.toFixed(6)}
+   • *City:* ${locationData.city || "Unknown"}
+   • *Country:* ${locationData.country || "Unknown"}
+   • [View on Google Maps](${mapsLink})`;
+    } else {
+      locationText = "\n📍 *Location:* Not provided (user denied permission)";
+    }
+
+    const message = `
+🎯 *New Contact Form Submission*
+
+👤 *Name:* ${formData.firstName} ${formData.lastName}
+📧 *Email:* ${formData.email || "Not provided"}
+🏢 *Company:* ${formData.company || "Not specified"}
+
+💬 *Message:*
+${formData.message}
+${locationText}
+
+📅 *Submitted at:* ${new Date().toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
+    })}
+🌐 *Source:* Portfolio Website
+`;
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: "Markdown",
+            disable_web_page_preview: true,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("Telegram API Error:", data);
+        throw new Error(data.description || "Failed to send message");
+      }
+
+      console.log("Telegram message sent successfully:", data);
+      return true;
+    } catch (error) {
+      console.error("Error sending to Telegram:", error);
+      setTelegramError(
+        "Form submitted successfully, but notification failed. I'll contact you via email."
+      );
+      return false;
+    }
+  };
 
   const {
     register,
@@ -117,17 +284,111 @@ export function ContactSection() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    setTelegramError(null);
+    setLocationError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Ask for location permission first
+      let locationData;
+      try {
+        // Show location permission dialog
+        const permission = await navigator.permissions.query({
+          name: "geolocation" as any,
+        });
 
-    console.log("Form submitted:", data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
+        if (permission.state === "denied") {
+          // If permission was previously denied, show a message
+          const shouldContinue = window.confirm(
+            "Location permission was previously denied. Submit form without location?"
+          );
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+          if (!shouldContinue) {
+            setIsSubmitting(false);
+            return;
+          }
+        } else {
+          // Try to get location
+          locationData = await getLocationDetails();
+        }
+      } catch (locationError: any) {
+        // If user denies location, ask if they want to continue
+        const shouldContinue = window.confirm(
+          `${locationError.message}\n\nSubmit form without location?`
+        );
+
+        if (!shouldContinue) {
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      // Send to Telegram with location data
+      const telegramSuccess = await sendTelegramMessage(
+        data,
+        locationData || undefined
+      );
+
+      // Simulate API call for your backend (you can add your actual API here)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Log to console for debugging
+      console.log("Form submitted:", {
+        ...data,
+        location: locationData,
+        telegramSent: telegramSuccess,
+        timestamp: new Date().toISOString(),
+      });
+
+      // Show success message
+      setIsSubmitted(true);
+
+      // Reset form
+      reset();
+      setUserLocation(null);
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setTelegramError(
+        "An error occurred. Please try again or contact me directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Function to get your Telegram Chat ID
+  const getChatId = async () => {
+    if (!TELEGRAM_BOT_TOKEN) {
+      console.error("Telegram bot token is not set");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`
+      );
+      const data = await response.json();
+      console.log("Telegram updates:", data);
+
+      if (data.ok && data.result.length > 0) {
+        const chatId = data.result[0].message.chat.id;
+        console.log("Your Chat ID is:", chatId);
+        alert(
+          `Your Chat ID is: ${chatId}\nCopy this and replace TELEGRAM_CHAT_ID in the code.`
+        );
+      } else {
+        console.log("No messages found. Send a message to your bot first.");
+        alert(
+          "No messages found. Please send a message to your bot (@lokesh_portfolio_bot) first, then try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching chat ID:", error);
+    }
   };
 
   return (
@@ -151,11 +412,8 @@ export function ContactSection() {
             className="mb-16 text-center"
           >
             <div className="inline-block">
-              <Button
-                variant="outline"
-                className="mb-4 gap-2 border-primary/30 bg-primary/10"
-              >
-                <MessageSquare className="h-4 w-4" />
+              <Button className="mb-4 gap-2 border-primary/30 text-white hover:text-white">
+                <MessageSquare className="h-4 w-4 text-white hover:text-white" />
                 Get In Touch
               </Button>
             </div>
@@ -169,6 +427,28 @@ export function ContactSection() {
               Have a project in mind? Let's discuss how we can turn your ideas
               into reality
             </p>
+
+            {/* Telegram Chat ID Helper (Remove in production) */}
+            {TELEGRAM_CHAT_ID === "YOUR_CHAT_ID" && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-6 inline-block"
+              >
+                <Button
+                  onClick={getChatId}
+                  variant="outline"
+                  size="sm"
+                  className="border-amber-500/30 text-amber-600 hover:bg-amber-500/10"
+                >
+                  <AlertCircle className="mr-2 h-4 w-4" />
+                  Click here to get your Telegram Chat ID
+                </Button>
+                <p className="mt-2 text-sm text-amber-600/80">
+                  Required for Telegram notifications
+                </p>
+              </motion.div>
+            )}
           </motion.div>
 
           <div className="grid gap-8 lg:grid-cols-3">
@@ -263,6 +543,23 @@ export function ContactSection() {
               className="lg:col-span-2"
             >
               <Card className="relative overflow-hidden border-border/50 bg-card/50 p-8 backdrop-blur-sm">
+                {/* Location Permission Note */}
+                {/* <div className="mb-6 rounded-lg border border-blue-500/30 bg-blue-500/10 p-4">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="h-5 w-5 text-blue-500" />
+                    <div>
+                      <h4 className="font-semibold text-blue-500">
+                        Location Permission
+                      </h4>
+                      <p className="text-sm text-blue-500/80">
+                        When you click "Send Message", we'll ask for your
+                        location permission to include it in the message. This
+                        helps us provide better solutions.
+                      </p>
+                    </div>
+                  </div>
+                </div> */}
+
                 {/* Success Message */}
                 {isSubmitted && (
                   <motion.div
@@ -279,6 +576,53 @@ export function ContactSection() {
                         <p className="text-sm text-green-500/80">
                           Thank you for reaching out. I'll get back to you
                           within 12 hours.
+                          {telegramError && (
+                            <span className="block mt-1 text-amber-600">
+                              {telegramError}
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Location Error Message */}
+                {locationError && !isSubmitted && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <AlertCircle className="h-5 w-5 text-amber-500" />
+                      <div>
+                        <h4 className="font-semibold text-amber-500">
+                          Location Error
+                        </h4>
+                        <p className="text-sm text-amber-500/80">
+                          {locationError}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Telegram Error Message */}
+                {telegramError && !isSubmitted && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <AlertCircle className="h-5 w-5 text-amber-500" />
+                      <div>
+                        <h4 className="font-semibold text-amber-500">
+                          Notification Error
+                        </h4>
+                        <p className="text-sm text-amber-500/80">
+                          {telegramError}
                         </p>
                       </div>
                     </div>
@@ -381,7 +725,7 @@ export function ContactSection() {
                       className={
                         errors.message
                           ? "border-red-500 focus-visible:ring-red-500"
-                          : "h-37 mt-2"
+                          : "mt-2 h-30"
                       }
                     />
                     {errors.message && (
@@ -391,17 +735,18 @@ export function ContactSection() {
                     )}
                   </div>
 
-                  {/* Submit Button */}
                   <Button
                     type="submit"
                     size="lg"
                     className="group w-full bg-gradient-to-r from-primary to-primary/80 hover:shadow-lg"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || isGettingLocation}
                   >
-                    {isSubmitting ? (
+                    {isSubmitting || isGettingLocation ? (
                       <>
                         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                        Sending...
+                        {isGettingLocation
+                          ? "Uploading to database..."
+                          : "Sending..."}
                       </>
                     ) : (
                       <>
@@ -412,20 +757,27 @@ export function ContactSection() {
                   </Button>
 
                   <p className="text-center text-xs text-muted-foreground">
-                    I typically respond within 12 hours. Your information is
-                    secure and will never be shared.
+                    We'll ask for your location permission when submitting. Your
+                    location is only used to provide better service and is
+                    included in the notification. Your information is secure and
+                    will never be shared.
+                    {TELEGRAM_CHAT_ID === "YOUR_CHAT_ID" && (
+                      <span className="block mt-1 text-amber-600">
+                        ⚠️ Telegram notifications not configured. Click the
+                        button above to get your Chat ID.
+                      </span>
+                    )}
                   </p>
                 </form>
               </Card>
 
-              {/* Contact Methods Grid */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
+                className="mt-8 grid gap-2 sm:grid-cols-1 lg:grid-cols-5"
               >
                 {contactInfo.map((info, index) => (
                   <motion.div
@@ -438,7 +790,7 @@ export function ContactSection() {
                       onClick={() => {
                         window.open(info.link, "_blank");
                       }}
-                      className="group cursor-pointer relative h-full overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
+                      className="group relative h-full cursor-pointer overflow-hidden border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/50"
                     >
                       <div className="space-y-3">
                         <div
@@ -450,25 +802,20 @@ export function ContactSection() {
                           <h4 className="text-sm font-semibold">
                             {info.title}
                           </h4>
-                          {/* <p className="text-xs text-muted-foreground">
+                          <p className="text-xs text-muted-foreground">
                             {info.description}
-                          </p> */}
+                          </p>
                         </div>
-                        {/* {info.link ? (
-                          <a
-                            href={info.link}
-                            target={
-                              info.title !== "Phone" ? "_blank" : undefined
-                            }
-                            rel="noopener noreferrer"
-                            className="group/link flex items-center gap-1 text-sm font-medium text-primary"
-                          >
-                            {info.value}
-                            <ExternalLink className="h-3 w-3 opacity-0 transition-opacity group-hover/link:opacity-100" />
-                          </a>
-                        ) : (
-                          <p className="text-sm font-medium">{info.value}</p>
-                        )} */}
+                        <a
+                          href={info.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link flex items-center gap-1 text-sm font-medium text-primary"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {info.value}
+                          <ExternalLink className="h-3 w-3 opacity-0 transition-opacity group-hover/link:opacity-100" />
+                        </a>
                       </div>
                     </Card>
                   </motion.div>
